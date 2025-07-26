@@ -31,6 +31,7 @@
     };
 
    home.packages = with pkgs; [
+    vscode
     tokei
     temurin-bin-21
     jetbrains.idea-ultimate

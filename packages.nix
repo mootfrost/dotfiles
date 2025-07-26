@@ -9,7 +9,7 @@
     (google-chrome.override {
         commandLineArgs = ["--enable-wayland-ime" "--wayland-text-input-version=3"];
     })
-    vscode
+    yubikey-manager
     _64gram
     kdePackages.dolphin
     spotify

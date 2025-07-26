@@ -7,8 +7,8 @@
       ./login.nix
       ./audio.nix
       ./drivers.nix
+      ./security.nix
     ];
-  timeZone = "Europe/Moscow";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "nodev";
@@ -51,7 +51,7 @@
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.NetworkManager.wantedBy = ["multi-user.target"];
-  users.groups.networkmanager.members = ["fox"];
+  users.groups.networkmanager.members = ["owl"];
   networking.nameservers = ["1.1.1.1"];
   services.resolved.enable = true;
   boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65;
