@@ -115,6 +115,7 @@
 
       #clock,
       #pulseaudio,
+      #network,
       #custom-logo,
       #custom-power,
       #custom-music-player,
@@ -177,11 +178,12 @@
           color: #74c7ec;
       }
 
+
       #clock.simpleclock {
           color: #89b4fa;
       }
 
-      #window {
+      #network {
           color: #a6e3a1;
       }
 
@@ -197,7 +199,7 @@
           color: #89b4fa;
       }
 
-      #custom-power {
+      #battery {
           color: #f38ba8;
           padding-right: 5px;
           font-size: 14px;

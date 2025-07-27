@@ -37,6 +37,8 @@
     jetbrains.idea-ultimate
     jetbrains.rider
     rustup
+    gnumake
+    clang
     (python3.withPackages (
       ps:
         with ps;

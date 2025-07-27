@@ -21,5 +21,6 @@
     libreoffice-qt
     obsidian
     obs-studio
+    (import ./foxshot pkgs)
   ];
 }
