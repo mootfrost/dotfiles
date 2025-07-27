@@ -12,6 +12,7 @@
     ./style.nix
     ./packages.nix
     ./dev.nix
+    ./zapret.nix
   ];
 
 

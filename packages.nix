@@ -13,6 +13,7 @@
     _64gram
     kdePackages.dolphin
     spotify
+    vesktop
     duf
     htop
     pavucontrol

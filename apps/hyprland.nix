@@ -60,6 +60,7 @@
         "$mod, V, togglefloating,"
         "$mod, J, togglesplit,"
         "$mod, P, pseudo,"
+        "$mod, S, exec, foxshot"
       ]
       ++ (
         builtins.concatLists (builtins.genList (i:
