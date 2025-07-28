@@ -22,6 +22,7 @@
     libreoffice-qt
     obsidian
     obs-studio
+    kdePackages.ark
     (import ./foxshot pkgs)
   ];
 }
