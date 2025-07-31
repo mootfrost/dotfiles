@@ -31,7 +31,9 @@
     };
 
    home.packages = with pkgs; [
+    orca-slicer
     vscode
+    httpie
     tokei
     temurin-bin-21
     jetbrains.idea-ultimate
