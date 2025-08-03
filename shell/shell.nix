@@ -3,6 +3,7 @@
     enable = true;
     initExtra = ''
       eval "$(starship init zsh)"
+      export PATH="$PATH:/home/owl/.dotnet/tools"
     '';
     shellAliases = {
       hms = "home-manager switch --flake ~/.dotfiles";

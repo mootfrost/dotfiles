@@ -31,13 +31,27 @@
     };
 
    home.packages = with pkgs; [
+    # c#
+    dotnetCorePackages.dotnet_8.sdk
+    jetbrains.rider
+    mono
+    unityhub
+    
+    
+
+    # FNA 
+    faudio
+    fna3d
+    sdl3
+    sdl2-compat
+
     orca-slicer
     vscode
     httpie
     tokei
     temurin-bin-21
     jetbrains.idea-ultimate
-    jetbrains.rider
+    
     rustup
     gnumake
     clang

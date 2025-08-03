@@ -5,6 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    neofetch
+    nekoray
     firefox
     (google-chrome.override {
         commandLineArgs = ["--enable-wayland-ime" "--wayland-text-input-version=3"];

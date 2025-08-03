@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 {
   imports =
     [ 
@@ -10,6 +9,8 @@
       ./security.nix
       #./zapret
     ];
+
+  time.timeZone = "Europe/Moscow";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "nodev";
@@ -24,10 +25,11 @@
     enable = true;
     xwayland.enable = true;
   };
+  programs.nekoray.tunMode.enable = true;
 
   users.users.owl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
   };
  
@@ -48,7 +50,11 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
+
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.NetworkManager.wantedBy = ["multi-user.target"];
