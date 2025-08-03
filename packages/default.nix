@@ -2,6 +2,6 @@
   imports = [
     ./_64gram
     ./foxshot
-    ./mgcb.nix
+    ./mgcb
   ];
 }
