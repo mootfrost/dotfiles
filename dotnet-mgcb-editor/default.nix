@@ -1,8 +1,7 @@
-{ pkgs ? import <nixpkgs> {} }:
-
+pkgs:
 pkgs.buildDotnetGlobalTool {
-  pname = "dotnet-mgcb-editor";
-  version = "3.8.2.1105";
+  pname = "dotnet-mgcb-editor-linux";
+  version = "3.8.4";
   nativeBuildInputs = [ 
     pkgs.gtk3
     pkgs.glib
@@ -12,7 +11,7 @@ pkgs.buildDotnetGlobalTool {
 
   ];  # Ensure gtk3 is available at build time
 
-  nugetHash = "sha256-8xfQiZ3utEpmdgKZtKsTWBPzEZdaPIW/XFi5sJWTTd8="; # Replace with the correct hash
+  nugetHash = "sha256-4QSxPHZODM1r6fefmLgTpzSnSvkhzvcd2t+R8ZkjPCg="; # Replace with the correct hash
 
   dotnetFixupHook = ''
     echo '<============ DEBUG START ==============>'
@@ -26,8 +25,7 @@ pkgs.buildDotnetGlobalTool {
     export GSETTINGS_SCHEMA_DIR=${pkgs.glib}/share/glib-2.0/schemas:${pkgs.gsettings-desktop-schemas}/share/glib-2.0/schemas
     # Set XDG_DATA_DIRS so that icon themes and desktop files are available.
     export XDG_DATA_DIRS=${pkgs.hicolor-icon-theme}/share:${pkgs.adwaita-icon-theme}/share:${pkgs.gtk3}/share:\$XDG_DATA_DIRS
-
-    exec dotnet mgcb-editor "$@"
+    exec ${placeholder "out"}/lib/dotnet-mgcb-editor-linux/mgcb-editor-linux "$@"
 EOF
     chmod +x $out/bin/mgcb-editor
 

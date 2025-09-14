@@ -13,6 +13,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/38266e98-cd22-4a66-8d73-f4a8124a5382";
       fsType = "btrfs";
@@ -66,4 +67,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.opengl = {
+  enable = true;
+  extraPackages = with pkgs; [ amdvlk ];
+  };
 }

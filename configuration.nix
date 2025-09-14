@@ -26,10 +26,18 @@
     xwayland.enable = true;
   };
   programs.nekoray.tunMode.enable = true;
+  systemd.services.nekoray = {
+  serviceConfig = {
+    AmbientCapabilities = [ "CAP_NET_ADMIN" ];
+    CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
+  };
+};
+  
 
+  programs.adb.enable = true;
   users.users.owl = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "adbusers" "vboxusers"];
     shell = pkgs.zsh;
   };
  
@@ -37,6 +45,7 @@
     vim
     git
     wget
+    nekoray
   ];
 
   fonts.packages = with pkgs; [
@@ -50,16 +59,25 @@
     nerd-fonts.jetbrains-mono
   ];
 
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enableKvm = true;
+  virtualisation.virtualbox.host.addNetworkInterface = false;
+  users.extraGroups.vboxusers.members = [ "owl" ];
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
   };
 
   networking.networkmanager.enable = true;
+  networking.firewall = rec {
+  allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  allowedUDPPortRanges = allowedTCPPortRanges;
+};
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.NetworkManager.wantedBy = ["multi-user.target"];
   users.groups.networkmanager.members = ["owl"];
-  networking.nameservers = ["1.1.1.1"];
   services.resolved.enable = true;
   boot.kernel.sysctl."net.ipv4.ip_default_ttl" = 65;
   

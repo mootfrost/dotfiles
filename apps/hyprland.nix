@@ -61,6 +61,7 @@
         "$mod, J, togglesplit,"
         "$mod, P, pseudo,"
         "$mod, S, exec, foxshot"
+        "$mod, F, fullscreen,"
       ]
       ++ (
         builtins.concatLists (builtins.genList (i:

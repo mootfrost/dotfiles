@@ -31,12 +31,23 @@
     };
 
    home.packages = with pkgs; [
+    direnv
+    heimdall
+
     # c#
     dotnetCorePackages.dotnet_8.sdk
     jetbrains.rider
     mono
     unityhub
+    glfw
+    libGL
+    vulkan-tools
+    vulkan-loader
+    tiled
     
+    # node
+    nodejs
+    yarn-berry
     
 
     # FNA 

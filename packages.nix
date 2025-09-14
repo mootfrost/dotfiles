@@ -4,9 +4,16 @@
   lib,
   ...
 }: {
+  services.kdeconnect = {
+    enable = true;
+    package = pkgs.kdePackages.kdeconnect-kde;
+    indicator = true;
+  };
   home.packages = with pkgs; [
+    hiddify-app
+    prismlauncher
+    xwayland-satellite
     neofetch
-    nekoray
     firefox
     (google-chrome.override {
         commandLineArgs = ["--enable-wayland-ime" "--wayland-text-input-version=3"];
@@ -26,5 +33,6 @@
     obs-studio
     kdePackages.ark
     (import ./foxshot pkgs)
+    (import ./dotnet-mgcb-editor pkgs)
   ];
 }

@@ -13,12 +13,7 @@
     ./packages.nix
     ./dev.nix
   ];
-
-
-  home.file = {
-  };
-
- 
+  
   home.sessionVariables = {
   };
 
