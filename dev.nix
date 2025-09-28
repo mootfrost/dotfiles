@@ -77,5 +77,7 @@
           ]
           ++ black.optional-dependencies.d
     ))
+
+    poetry
    ];
 }
