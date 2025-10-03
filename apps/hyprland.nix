@@ -73,9 +73,10 @@
             in [
               "$mod, code:1${toString i}, workspace, ${toString ws}"
               "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$mod CONTROL, code:1${toString i}, exec, hyprctl dispatch moveworkspacetomonitor ${toString i} current && hyprctl dispatch workspace ${toString i}"
             ]
           )
         9)
-      );     
+      );
   };
 }
