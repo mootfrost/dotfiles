@@ -11,6 +11,10 @@
       resize_on_border = true;
       allow_tearing = true;
     };
+    monitor = [
+      "eDP-1,1920x1200@60,0x0,1.5"
+      "DP-2,1920x1080@60,-1920x0,1"
+    ];
     workspace = 
       [
         "w[tv1], gapsout:0, gapsin:0"

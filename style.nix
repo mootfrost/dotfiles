@@ -8,7 +8,7 @@
     preferences.wallpaper = mkOption {
       type = types.path;
       description = "Path to wallpaper file.";
-      default = ./wallpapers/touhou.png;
+      default = ./wallpapers/night.jpg;
     };
     preferences.font.monospace = mkOption {
       type = types.str;

@@ -10,6 +10,7 @@
     indicator = true;
   };
   home.packages = with pkgs; [
+    ffmpeg
     hiddify-app
     prismlauncher
     xwayland-satellite
