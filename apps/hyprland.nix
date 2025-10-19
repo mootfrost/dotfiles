@@ -56,7 +56,7 @@
     bind = 
       [
         "$mod, Q, exec, kitty"
-        "$mod, E, exec, dolphin"
+        "$mod, E, exec, nautilus"
         "$mod, W, killactive,"
         "$mod, R, exec, tofi-drun --drun-launch=true"
         "$mod, mouse_up, workspace, e-1"
@@ -73,7 +73,7 @@
             in [
               "$mod, code:1${toString i}, workspace, ${toString ws}"
               "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              "$mod CONTROL, code:1${toString i}, exec, hyprctl dispatch moveworkspacetomonitor ${toString i} current && hyprctl dispatch workspace ${toString i}"
+              "$mod CONTROL, code:1${toString i}, exec, hyprctl dispatch moveworkspacetomonitor ${toString ws} current && hyprctl dispatch workspace ${toString ws}"
             ]
           )
         9)

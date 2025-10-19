@@ -9,7 +9,9 @@
     package = pkgs.kdePackages.kdeconnect-kde;
     indicator = true;
   };
+
   home.packages = with pkgs; [
+    scrcpy
     ffmpeg
     hiddify-app
     prismlauncher
@@ -21,7 +23,6 @@
     })
     yubikey-manager
     _64gram
-    kdePackages.dolphin
     spotify
     vesktop
     duf
@@ -32,7 +33,11 @@
     libreoffice-qt
     obsidian
     obs-studio
+
+    nautilus
     kdePackages.ark
+    rar
+    
     (import ./foxshot pkgs)
     (import ./dotnet-mgcb-editor pkgs)
   ];

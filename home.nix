@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, jbPkgs, ... }:
 
 {
   home.username = "owl";
