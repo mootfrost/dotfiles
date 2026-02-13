@@ -8,9 +8,10 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, jb-nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, jb-nixpkgs, home-manager, nixos-hardware, ... }:
     let 
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -23,6 +24,7 @@
          inherit system;
          modules = [ 
           ./configuration.nix 
+          nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
           ];
        };
      };

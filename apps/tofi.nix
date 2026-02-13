@@ -10,9 +10,9 @@
       text-color = "#e8cdf4";
       prompt-color = "#f38ba8";
       selection-color = "#f9e2af";
-      background-color = "#2b1e2e";
+      background-color = "#201e2eff";
       border-width = 2;
-      border-color = "#8F00FF";
+      border-color = "#2f00ffff";
       outline-width = 0;
       corner-radius = 5;
       padding-left = 16;

@@ -11,9 +11,12 @@
   };
 
   home.packages = with pkgs; [
+    thunderbird
+    zip
+    ghostscript
+    inkscape
     scrcpy
     ffmpeg
-    hiddify-app
     prismlauncher
     xwayland-satellite
     neofetch
@@ -32,13 +35,20 @@
     brightnessctl
     libreoffice-qt
     obsidian
+    zotero
     obs-studio
 
     nautilus
     kdePackages.ark
     rar
+    udiskie
+
+    mpv
+    qbittorrent
+    element-desktop
     
     (import ./foxshot pkgs)
-    (import ./dotnet-mgcb-editor pkgs)
+    # (import ./dotnet-mgcb-editor pkgs)
   ];
 }
+

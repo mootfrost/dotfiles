@@ -156,6 +156,9 @@
       window#waybar.empty #window {
           background-color: transparent;
       }
+      #language {
+        color: #aeaeae;
+      }
 
       #cpu {
           color: #94e2d5;

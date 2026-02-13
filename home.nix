@@ -13,9 +13,7 @@
     ./packages.nix
     ./dev.nix
   ];
-  
-  home.sessionVariables = {
-  };
+
 
   programs.home-manager.enable = true;
 }

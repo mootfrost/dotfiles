@@ -5,13 +5,12 @@
 {
   services.hyprpaper = {
     enable = true;
-    settings = {
-      preload = [
-        "${config.preferences.wallpaper}"
-      ];
-      wallpaper = [
-        ",${config.preferences.wallpaper}"
-      ];
+     settings = {
+            splash = false;
+          wallpaper = {
+      monitor="";
+      path = "${config.preferences.wallpaper}";
     };
+     };
   };
 }

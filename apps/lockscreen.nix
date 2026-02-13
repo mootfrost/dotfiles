@@ -68,7 +68,7 @@
       };
       listener = [
         {
-          timeout = 60 * 5;
+          timeout = 60 * 20;
           on-timeout = "loginctl lock-session";
         }
       ];

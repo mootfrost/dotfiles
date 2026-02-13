@@ -1,7 +1,15 @@
 {
+  config,
+  ...
+}:
+{
   programs.kitty.enable = true;
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "udiskie"
+      "hyprpaper"
+    ];
     xwayland = {
       force_zero_scaling = true;
     };
@@ -11,9 +19,20 @@
       resize_on_border = true;
       allow_tearing = true;
     };
-    monitor = [
-      "eDP-1,1920x1200@60,0x0,1.5"
-      "DP-2,1920x1080@60,-1920x0,1"
+
+    monitorv2 = [
+      {
+        output = "eDP-1";
+        mode = "1920x1200@60";
+        position = "0x0";
+        scale = 1.25;
+      }
+      {
+        output = "DP-2";
+        mode = "1920x1080@60";
+        position = "-1920x0";
+        scale = 1;
+      }
     ];
     workspace = 
       [
@@ -22,10 +41,10 @@
       ];
     windowrule = 
       [
-        "bordersize 0, floating:0, onworkspace:w[tv1]"
-        "rounding 0, floating:0, onworkspace:w[tv1]"
-        "bordersize 0, floating:0, onworkspace:f[1]"
-        "rounding 0, floating:0, onworkspace:f[1]"
+        "match:workspace tv1, float false, border_size 0"
+        "match:workspace tv1, float false, rounding 0"
+        "match:workspace 1, float false, border_size 0"
+        "match:workspace 1, float false, rounding 0"
       ];
     input = {
       kb_layout = "us, ru";

@@ -9,7 +9,7 @@
     '';
     shellAliases = {
       hms = "home-manager switch --flake ~/.dotfiles";
-      nss = "nixos-rebuild switch --flake ~/.dotfiles";
+      nss = "sudo nixos-rebuild switch --flake ~/.dotfiles\#owl-pc";
     };
   };
 
