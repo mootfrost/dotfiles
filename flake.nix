@@ -8,10 +8,15 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    codechecker = {
+      url = "git+https://git.mootfrost.dev/Mootfrost/CodeChecker.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, jb-nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = { self, nixpkgs, jb-nixpkgs, home-manager, nixos-hardware, codechecker, ... }:
     let 
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -35,6 +40,7 @@
            ./home.nix
            {
              _module.args.jbPkgs = jbPkgs;
+             _module.args.codechecker = codechecker;
            }
          ];
        };

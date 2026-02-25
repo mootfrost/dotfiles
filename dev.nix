@@ -3,6 +3,7 @@
   pkgs,
   pkgs-unstable,
   jbPkgs,
+  codechecker,
   ...
 }: {
   home.file =
@@ -24,13 +25,30 @@
       (mkVmOptions "CLion"        "clion64.vmoptions")
       (mkVmOptions "PyCharm"      "pycharm64.vmoptions")
       (mkVmOptions "Rider2025.3"        "rider64.vmoptions")
-      (mkVmOptions "Clion2025.3"        "rider64.vmoptions")
+      (mkVmOptions "CLion2025.3"        "clion64.vmoptions")
     ]
     // {
       # ".local/share/jdks/temurin8".source  = pkgs.temurin-bin-8;
       # ".local/share/jdks/temurin11".source = pkgs.temurin-bin-11;
       # ".local/share/jdks/temurin17".source = pkgs.temurin-bin-17;
       ".local/share/jdks/temurin21".source = pkgs.temurin-bin-21;
+    };
+
+
+    programs.ssh = {
+      enable = true;
+      matchBlocks = {
+        "homelab" = {
+          hostname = "homelab.mootfrost.dev";
+          port = 34444;
+        };
+        "vpn1" = {
+          hostname = "de-01.mootfrost.dev";
+        };
+        "vpn2" = {
+          hostname = "de-02.mootfrost.dev";
+        };
+      };
     };
     
 #    jbPkgs2024 = jbPkgs.jetbrains.idea-ultimate.overrideAttrs (old: {
@@ -41,6 +59,7 @@
 #    });
 
    home.packages = with pkgs; [
+    eza
     android-tools
 
     postman
@@ -84,6 +103,7 @@
     rustup
     gnumake
     clang
+    qtcreator
     (python3.withPackages (
       ps:
         with ps;
@@ -99,8 +119,9 @@
     poetry
     ruff
     pyright
-   ]; 
-#++ [
-#     jbPkgs.jetbrains.idea-ultimate 
-#   ];
+
+   ]
+++ [
+    codechecker.packages.${pkgs.system}.default
+  ];
 }

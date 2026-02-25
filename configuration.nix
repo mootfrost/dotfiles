@@ -85,9 +85,10 @@
 
   networking.networkmanager.enable = true;
   networking.firewall = rec {
-  allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 445; to = 445; } {from = 50499; to = 50500; } { from = 1143; to = 1144; } ];
-  allowedUDPPortRanges = [ { from = 1714; to = 1764; } { from = 445; to = 445; } {from = 50499; to = 50500; } { from = 1143; to = 11441; } ];
-};
+    allowedTCPPorts = [ 8384 ];
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } { from = 445; to = 445; } {from = 50499; to = 50500; } { from = 1143; to = 1144; } ];
+    allowedUDPPortRanges = [ { from = 1714; to = 1764; } { from = 445; to = 445; } {from = 50499; to = 50500; } { from = 1143; to = 1144; } ];
+  };
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.firewall.trustedInterfaces = [ "tun0" ];
   
@@ -116,6 +117,18 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
+  };
+  
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "owl";
+    dataDir = "/home/owl";
+    configDir = "/home/owl/.config/syncthing";
+    settings.gui = {
+      user = "owl-nixos";
+      password = "owl-owl-owl";
+    };
   };
 
   systemd.services.nix-daemon.environment = {

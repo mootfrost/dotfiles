@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "codechecker": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772028589,
+        "narHash": "sha256-U+gFkv3VIX/8XgOdw1craWq4/Xp/SMZxP/M48x1FHHs=",
+        "ref": "refs/heads/master",
+        "rev": "e12ab61e92661323419893543c5d9f6d7a474694",
+        "revCount": 186,
+        "type": "git",
+        "url": "https://git.mootfrost.dev/Mootfrost/CodeChecker.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.mootfrost.dev/Mootfrost/CodeChecker.git"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1731098351,
@@ -211,6 +231,7 @@
     },
     "root": {
       "inputs": {
+        "codechecker": "codechecker",
         "home-manager": "home-manager",
         "jb-nixpkgs": "jb-nixpkgs",
         "lanzaboote": "lanzaboote",
