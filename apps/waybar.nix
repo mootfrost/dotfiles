@@ -16,13 +16,19 @@
         "height" = 30;
         "spacing" = 4;
         "modules-left" = ["hyprland/workspaces"];
+        "group/system" = {
+            "orientation" = "horizontal";
+            "modules" = [
+                "pulseaudio"
+                "network"
+                "battery"
+                "temperature"
+            ];
+        };
         "modules-right" = [
             "tray"
-            "pulseaudio"
-            "network"
             "hyprland/language"
-            "temperature"
-            "battery"
+            "group/system"
             "clock"
         ];
         "wlr/workspaces" = {
@@ -56,7 +62,7 @@
 	        "format-icons" = [
 		      "󰤯" "󰤟" "󰤢" "󰤥" "󰤨1"
 	        ];
-            "on-click-right" = "kitty nmtui";
+            "on-click" = "kitty nmtui";
         };
       };
     };
@@ -74,7 +80,7 @@
           transition-duration: 0.5s;
           /* background-color: #1e1e2e; */
           /* background-color: #181825; */
-          background-color: rgba(24, 24, 37, 0.8);
+          background-color: rgba(44, 44, 82, 0.8);
       }
 
       window#waybar.hidden {
@@ -113,9 +119,8 @@
           background-color: #f38ba8;
       }
 
+      #language,
       #clock,
-      #pulseaudio,
-      #network,
       #custom-logo,
       #custom-power,
       #custom-music-player,
@@ -124,6 +129,7 @@
       #memory,
       #window,
       #custom-screen-recorder,
+      #system
       #custom-gpu {
           min-height: 0;
           padding: 2px 10px;
@@ -131,6 +137,17 @@
           margin: 4px 4px;
           background-color: #181825;
       }
+
+
+
+#battery,
+#network,
+#pulseaudio,
+#temperature {
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+}
 
       #custom-sep {
           padding: 0px;
