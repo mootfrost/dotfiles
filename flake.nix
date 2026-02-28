@@ -16,34 +16,50 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, jb-nixpkgs, home-manager, nixos-hardware, codechecker, ... }:
-    let 
+  outputs =
+    {
+      self,
+      nixpkgs,
+      jb-nixpkgs,
+      home-manager,
+      nixos-hardware,
+      codechecker,
+      ...
+    }:
+    let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = import nixpkgs { system = system; config.allowUnfree = true; };
-      jbPkgs = import jb-nixpkgs { inherit system; config.allowUnfree = true; };
-     in {
-     imports = [ ./packages ];
-     nixosConfigurations = {
-       owl-pc = lib.nixosSystem {
-         inherit system;
-         modules = [ 
-          ./configuration.nix 
-          nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
+      pkgs = import nixpkgs {
+        system = system;
+        config.allowUnfree = true;
+      };
+      jbPkgs = import jb-nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      imports = [ ./packages ];
+      nixosConfigurations = {
+        owl-pc = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
           ];
-       };
-     };
-     homeConfigurations = {
-       owl = home-manager.lib.homeManagerConfiguration {
-         inherit pkgs;
-         modules = [ 
-           ./home.nix
-           {
-             _module.args.jbPkgs = jbPkgs;
-             _module.args.codechecker = codechecker;
-           }
-         ];
-       };
-     };
-   };
+        };
+      };
+      homeConfigurations = {
+        owl = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home.nix
+            {
+              _module.args.jbPkgs = jbPkgs;
+              _module.args.codechecker = codechecker;
+            }
+          ];
+        };
+      };
+    };
 }

@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.tofi = {
     enable = true;
     settings = {

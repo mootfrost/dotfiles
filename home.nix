@@ -1,10 +1,15 @@
-{ config, pkgs, jbPkgs, codechecker, ... }:
+{
+  config,
+  pkgs,
+  jbPkgs,
+  codechecker,
+  ...
+}:
 
 {
   home.username = "owl";
   home.homeDirectory = "/home/owl";
 
- 
   home.stateVersion = "25.05";
   imports = [
     ./apps
@@ -13,7 +18,6 @@
     ./packages.nix
     ./dev.nix
   ];
-
 
   programs.home-manager.enable = true;
 }

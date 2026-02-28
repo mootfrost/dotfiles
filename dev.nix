@@ -5,7 +5,8 @@
   jbPkgs,
   codechecker,
   ...
-}: {
+}:
+{
   home.file =
     let
       mkVmOptions = ide: file: {
@@ -22,10 +23,10 @@
     in
     builtins.listToAttrs [
       (mkVmOptions "IntelliJIdea2025.3" "idea64.vmoptions")
-      (mkVmOptions "CLion"        "clion64.vmoptions")
-      (mkVmOptions "PyCharm"      "pycharm64.vmoptions")
-      (mkVmOptions "Rider2025.3"        "rider64.vmoptions")
-      (mkVmOptions "CLion2025.3"        "clion64.vmoptions")
+      (mkVmOptions "CLion" "clion64.vmoptions")
+      (mkVmOptions "PyCharm" "pycharm64.vmoptions")
+      (mkVmOptions "Rider2025.3" "rider64.vmoptions")
+      (mkVmOptions "CLion2025.3" "clion64.vmoptions")
     ]
     // {
       # ".local/share/jdks/temurin8".source  = pkgs.temurin-bin-8;
@@ -34,94 +35,94 @@
       ".local/share/jdks/temurin21".source = pkgs.temurin-bin-21;
     };
 
-
-    programs.ssh = {
-      enable = true;
-      matchBlocks = {
-        "homelab" = {
-          hostname = "homelab.mootfrost.dev";
-          port = 34444;
-        };
-        "vpn1" = {
-          hostname = "de-01.mootfrost.dev";
-        };
-        "vpn2" = {
-          hostname = "de-02.mootfrost.dev";
-        };
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "homelab" = {
+        hostname = "homelab.mootfrost.dev";
+        port = 34444;
+      };
+      "vpn1" = {
+        hostname = "de-01.mootfrost.dev";
+      };
+      "vpn2" = {
+        hostname = "de-02.mootfrost.dev";
       };
     };
-    
-#    jbPkgs2024 = jbPkgs.jetbrains.idea-ultimate.overrideAttrs (old: {
-#      installPhase = ''
-#        ${old.installPhase}
-#        mv $out/bin/idea-ultimate $out/bin/idea-ultimate-2024
-#      '';
-#    });
+  };
 
-   home.packages = with pkgs; [
-    eza
-    android-tools
+  #    jbPkgs2024 = jbPkgs.jetbrains.idea-ultimate.overrideAttrs (old: {
+  #      installPhase = ''
+  #        ${old.installPhase}
+  #        mv $out/bin/idea-ultimate $out/bin/idea-ultimate-2024
+  #      '';
+  #    });
 
-    postman
-    direnv
-    heimdall
-    tinymist
-    typst
+  home.packages =
+    with pkgs;
+    [
+      eza
+      android-tools
 
-    # c#
-    dotnetCorePackages.dotnet_8.sdk
-    jetbrains.rider
-    jetbrains.clion
-    # jetbrains.clion
-    mono
-    unityhub
-    glfw
-    libGL
-    vulkan-tools
-    vulkan-loader
-    tiled
-    
-    # node
-    nodejs
-    yarn-berry
-    
+      postman
+      direnv
+      heimdall
+      tinymist
+      typst
 
-    # FNA 
-    faudio
-    fna3d
-    sdl3
-    sdl2-compat
+      # c#
+      dotnetCorePackages.dotnet_8.sdk
+      jetbrains.rider
+      jetbrains.clion
+      # jetbrains.clion
+      mono
+      unityhub
+      glfw
+      libGL
+      vulkan-tools
+      vulkan-loader
+      tiled
 
-    orca-slicer
-    vscode
-    httpie
-    tokei
-    temurin-bin-21
-    jetbrains.idea
+      # node
+      nodejs
+      yarn-berry
 
-    
-    rustup
-    gnumake
-    clang
-    qtcreator
-    (python3.withPackages (
-      ps:
+      # FNA
+      faudio
+      fna3d
+      sdl3
+      sdl2-compat
+
+      orca-slicer
+      vscode
+      httpie
+      tokei
+      temurin-bin-21
+      jetbrains.idea
+
+      rustup
+      gnumake
+      clang
+      qtcreator
+      (python3.withPackages (
+        ps:
         with ps;
-          [
-            black
-            dbus-python
-            ipython
-            httpx
-          ]
-          ++ black.optional-dependencies.d
-    ))
+        [
+          black
+          dbus-python
+          ipython
+          httpx
+        ]
+        ++ black.optional-dependencies.d
+      ))
 
-    poetry
-    ruff
-    pyright
+      poetry
+      ruff
+      pyright
+      nixfmt
 
-   ]
-++ [
-    codechecker.packages.${pkgs.system}.default
-  ];
+    ]
+    ++ [
+      codechecker.packages.${pkgs.system}.default
+    ];
 }

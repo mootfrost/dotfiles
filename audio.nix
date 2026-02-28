@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # breaks video playback in telegram and mpv for some reason
   #security.rtkit.enable = true;
   services.pipewire = {
@@ -17,9 +18,12 @@
             "node.description" = "A combined sink to all bluetooth devices";
             "combine.latency-compensate" = false;
             "combine.props" = {
-              "audio.position" = ["FL" "FR"];
+              "audio.position" = [
+                "FL"
+                "FR"
+              ];
             };
-            "stream.props" = {};
+            "stream.props" = { };
             "stream.rules" = [
               {
                 matches = [

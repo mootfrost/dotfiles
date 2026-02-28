@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   options = with lib; {
     preferences.wallpaper = mkOption {
       type = types.path;

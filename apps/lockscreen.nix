@@ -34,7 +34,7 @@
           outer_color = "rgb(17, 17, 27)";
           outline_thickness = 5;
           placeholder_text = ''<span foreground="##45475a">Password</span>'';
-          fail_text = ''$FAIL ($ATTEMPTS)'';
+          fail_text = "$FAIL ($ATTEMPTS)";
         }
       ];
 
@@ -51,27 +51,29 @@
     };
   };
   systemd.user.services.hypridle.Unit = {
-    After = ["graphical-session.target"];
+    After = [ "graphical-session.target" ];
     Requisite = "graphical-session.target";
   };
 
-  services.hypridle = let
-    lockExe = lib.getExe pkgs.hyprlock;
-    lockCmd = "${lib.getExe' pkgs.systemd "systemd-run"} --user ${lockExe}";
-  in {
-    enable = true;
-    settings = {
-      general = {
-        lock_cmd = "pidof ${lockExe} || ${lockCmd}";
-        unlock_cmd = "pkill -f -USR1 ${lockExe}";
-        before_sleep_cmd = "loginctl lock-session";
+  services.hypridle =
+    let
+      lockExe = lib.getExe pkgs.hyprlock;
+      lockCmd = "${lib.getExe' pkgs.systemd "systemd-run"} --user ${lockExe}";
+    in
+    {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof ${lockExe} || ${lockCmd}";
+          unlock_cmd = "pkill -f -USR1 ${lockExe}";
+          before_sleep_cmd = "loginctl lock-session";
+        };
+        listener = [
+          {
+            timeout = 60 * 20;
+            on-timeout = "loginctl lock-session";
+          }
+        ];
       };
-      listener = [
-        {
-          timeout = 60 * 20;
-          on-timeout = "loginctl lock-session";
-        }
-      ];
     };
-  };
 }

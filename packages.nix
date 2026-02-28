@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   services.kdeconnect = {
     enable = true;
     package = pkgs.kdePackages.kdeconnect-kde;
@@ -22,7 +23,10 @@
     neofetch
     firefox
     (google-chrome.override {
-        commandLineArgs = ["--enable-wayland-ime" "--wayland-text-input-version=3"];
+      commandLineArgs = [
+        "--enable-wayland-ime"
+        "--wayland-text-input-version=3"
+      ];
     })
     yubikey-manager
     _64gram
@@ -46,9 +50,8 @@
     mpv
     qbittorrent
     element-desktop
-    
+
     (import ./foxshot pkgs)
     # (import ./dotnet-mgcb-editor pkgs)
   ];
 }
-
