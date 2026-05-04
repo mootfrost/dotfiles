@@ -88,7 +88,7 @@
                 transition-duration: 0.5s;
                 /* background-color: #1e1e2e; */
                 /* background-color: #181825; */
-                background-color: rgba(44, 44, 82, 0.8);
+                background-color: #232533;
             }
 
             window#waybar.hidden {
@@ -120,7 +120,7 @@
 
             #workspaces button.active {
                 color: #1e1e2e;
-                background-color: #89b4fa;
+                background-color: #868ec6;
             }   
 
             #workspaces button.urgent {
@@ -145,7 +145,7 @@
             #network,
             #pulseaudio,
             #temperature {
-                margin: 0;
+                margin: 2px 6px;
                 border-radius: 0;
                 background: transparent;
             }

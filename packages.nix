@@ -20,7 +20,7 @@
     ffmpeg
     prismlauncher
     xwayland-satellite
-    neofetch
+    fastfetch
     firefox
     (google-chrome.override {
       commandLineArgs = [
@@ -50,6 +50,11 @@
     mpv
     qbittorrent
     element-desktop
+
+    loupe
+    cliphist
+    wl-clipboard
+    cloudflare-warp 
 
     (import ./foxshot pkgs)
     # (import ./dotnet-mgcb-editor pkgs)

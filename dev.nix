@@ -121,6 +121,11 @@
       pyright
       nixfmt
 
+      lazygit
+      zeronet-conservancy
+      zed-editor
+      peco
+      ty
     ]
     ++ [
       codechecker.packages.${pkgs.system}.default

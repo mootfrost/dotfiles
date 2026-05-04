@@ -9,7 +9,7 @@
     preferences.wallpaper = mkOption {
       type = types.path;
       description = "Path to wallpaper file.";
-      default = ./wallpapers/night.jpg;
+      default = ./wallpapers/quasar.png;
     };
     preferences.font.monospace = mkOption {
       type = types.str;

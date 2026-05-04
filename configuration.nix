@@ -41,6 +41,13 @@
     tunMode.enable = true;
   };
 
+  programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+};
+
   # programs.adb.enable = true;
   users.users.owl = {
     isNormalUser = true;
@@ -61,6 +68,8 @@
     mesa
     libGL
     libGLU
+    v2rayn
+    gnupg
   ];
 
   fonts.packages = with pkgs; [
@@ -73,7 +82,9 @@
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     corefonts
+    cloudflare-warp
   ];
+  systemd.packages = with pkgs; [ cloudflare-warp ];
   #  systemd.services.nix-daemon.environment = {
   #    http_proxy = "http://127.0.0.1:8080";
   #    https_proxy = "http://127.0.0.1:8080";
@@ -94,6 +105,8 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.nftables.enable = true;
+  networking.firewall.enable = true;
   networking.firewall = rec {
     allowedTCPPorts = [ 8384 ];
     allowedTCPPortRanges = [
@@ -176,12 +189,12 @@
     };
   };
 
-  systemd.services.nix-daemon.environment = {
-    http_proxy = "http://127.0.0.1:2080";
-    https_proxy = "http://127.0.0.1:2080";
-    all_proxy = "http://127.0.0.1:2080";
-    no_proxy = "127.0.0.1,localhost,internal.domain";
-  };
+  # systemd.services.nix-daemon.environment = {
+  #   http_proxy = "http://127.0.0.1:2080";
+  #   https_proxy = "http://127.0.0.1:2080";
+  #   all_proxy = "http://127.0.0.1:2080";
+  #   no_proxy = "127.0.0.1,localhost,internal.domain";
+  # };
 
   services.printing.drivers = [
     pkgs.brlaser
