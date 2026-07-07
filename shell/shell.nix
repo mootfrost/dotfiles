@@ -2,7 +2,7 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     initContent = ''
       eval "$(starship init zsh)"
       export PATH="$PATH:/home/owl/.dotnet/tools"

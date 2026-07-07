@@ -126,6 +126,9 @@
       zed-editor
       peco
       ty
+      shfmt
+
+      craftos-pc
     ]
     ++ [
       codechecker.packages.${pkgs.system}.default

@@ -4,6 +4,7 @@
 }:
 {
   programs.kitty.enable = true;
+  wayland.windowManager.hyprland.configType = "hyprlang";
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     exec-once = [
@@ -92,10 +93,11 @@
       "$mod, mouse_down, workspace, e+1"
       "$mod, B, togglefloating,"
       "$mod, V, exec, cliphist list | tofi | cliphist decode | wl-copy"
-      "$mod, J, togglesplit,"
+      # "$mod, J, togglesplit,"
       "$mod, P, pseudo,"
       "$mod, S, exec, foxshot"
       "$mod, F, fullscreen,"
+      "$mod, L, exec, hyprlock"
     ]
     ++ (builtins.concatLists (
       builtins.genList (

@@ -49,6 +49,7 @@
     device = "/dev/disk/by-uuid/38266e98-cd22-4a66-8d73-f4a8124a5382";
     fsType = "btrfs";
     options = [ "subvol=persist" ];
+    neededForBoot = true;
   };
 
   fileSystems."/var/log" = {
@@ -81,7 +82,5 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.opengl = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
 }

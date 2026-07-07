@@ -54,7 +54,7 @@
     loupe
     cliphist
     wl-clipboard
-    cloudflare-warp 
+    # cloudflare-warp 
 
     (import ./foxshot pkgs)
     # (import ./dotnet-mgcb-editor pkgs)
