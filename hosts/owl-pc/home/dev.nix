@@ -1,9 +1,7 @@
 {
   inputs,
   pkgs,
-  pkgs-unstable,
-  jbPkgs,
-  codechecker,
+  ctx,
   ...
 }:
 {
@@ -130,7 +128,8 @@
 
       craftos-pc
     ]
-    ++ [
-      codechecker.packages.${pkgs.system}.default
-    ];
+
+    ++ (with ctx.packages; [
+      ctx.sources.codechecker.packages.${pkgs.system}.default
+    ]);
 }

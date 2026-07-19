@@ -61,7 +61,7 @@
             path = "ssh://borg@homelab.mootfrost.dev:34444/data/backup/laptop-repo";
           }
         ];
-        encryption_passcommand = "cat ${config.sops.secrets.borg_repo_password.path}";
+        encryption_passcommand = "cat ${config.sops.secrets."borg/repo_password".path}";
         keep_daily = 3;
         keep_weekly = 3;
         keep_monthly = 2;

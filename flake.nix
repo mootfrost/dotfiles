@@ -19,52 +19,21 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      jb-nixpkgs,
-      home-manager,
-      nixos-hardware,
-      codechecker,
-      sops,
-      ...
-    }:
-    let
-      lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        system = system;
-        config.allowUnfree = true;
-      };
-      jbPkgs = import jb-nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-    {
-      imports = [ ./packages ];
-      nixosConfigurations = {
-        owl-pc = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./configuration.nix
-            nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen5
-            sops.nixosModules.sops
-          ];
-        };
-      };
-      homeConfigurations = {
-        owl = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home.nix
-            {
-              _module.args.jbPkgs = jbPkgs;
-              _module.args.codechecker = codechecker;
-            }
-          ];
-        };
-      };
-    };
+outputs = inputs@{ self, nixpkgs, ... }:
+let
+  ctx = {
+    sources = inputs;
+  };
+  mkSystems = import ./utils/mkSystems.nix ctx;
+
+  systems = mkSystems [
+    "owl-pc"
+    "laptop"
+  ];
+
+in
+{
+  nixosConfigurations = systems.hosts;
+  homeConfigurations = systems.homes;
+};
 }

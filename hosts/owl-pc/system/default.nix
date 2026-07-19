@@ -15,7 +15,6 @@
     ./printer.nix
     ./network.nix
     ./power.nix
-    ./secrets.nix
   ];
   services.dbus.implementation = "dbus";
 
