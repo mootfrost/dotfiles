@@ -54,6 +54,8 @@
     loupe
     cliphist
     wl-clipboard
+
+    ramus
     # cloudflare-warp 
 
     (import ./foxshot pkgs)
