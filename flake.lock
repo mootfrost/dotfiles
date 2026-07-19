@@ -253,7 +253,8 @@
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "sops": "sops"
+        "sops": "sops",
+        "yukigram": "yukigram"
       }
     },
     "rust-overlay": {
@@ -294,6 +295,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "yukigram": {
+      "locked": {
+        "lastModified": 1784375231,
+        "narHash": "sha256-fmXJ/09Dvd6vne9ABGA5hu3IqGUW8Avy1hdjmfqvZy4=",
+        "owner": "yukigram",
+        "repo": "yukigram",
+        "rev": "9627ee6ffdb3d1989d8d202ddd9915eb76d776ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yukigram",
+        "ref": "release",
+        "repo": "yukigram",
         "type": "github"
       }
     }

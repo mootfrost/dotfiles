@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  ctx,
   ...
 }:
 {
@@ -29,7 +30,7 @@
       ];
     })
     yubikey-manager
-    _64gram
+    # _64gram
     spotify
     vesktop
     duf
@@ -48,6 +49,7 @@
     udiskie
 
     mpv
+    vlc
     qbittorrent
     element-desktop
 
@@ -60,5 +62,11 @@
 
     (import ./foxshot pkgs)
     # (import ./dotnet-mgcb-editor pkgs)
-  ];
+    (pkgs.writeShellScriptBin "yukigram" ''
+      exec io.github.yukigram "$@"
+    '')
+  ]
+  ++ (with ctx.packages; [
+      ctx.sources.yukigram.packages.${pkgs.system}.nixpak
+    ]);
 }

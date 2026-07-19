@@ -33,29 +33,6 @@
       ".local/share/jdks/temurin21".source = pkgs.temurin-bin-21;
     };
 
-  programs.ssh = {
-    enable = true;
-    matchBlocks = {
-      "homelab" = {
-        hostname = "homelab.mootfrost.dev";
-        port = 34444;
-      };
-      "vpn1" = {
-        hostname = "de-01.mootfrost.dev";
-      };
-      "vpn2" = {
-        hostname = "de-02.mootfrost.dev";
-      };
-    };
-  };
-
-  #    jbPkgs2024 = jbPkgs.jetbrains.idea-ultimate.overrideAttrs (old: {
-  #      installPhase = ''
-  #        ${old.installPhase}
-  #        mv $out/bin/idea-ultimate $out/bin/idea-ultimate-2024
-  #      '';
-  #    });
-
   home.packages =
     with pkgs;
     [

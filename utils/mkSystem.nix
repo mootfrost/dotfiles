@@ -58,6 +58,9 @@ in
             mode = "home";
           };
           users = hostConfig.users;
+          sharedModules = [
+            "${ctx.src}/utils/modules.nix"
+          ];
         };
       }
     ];

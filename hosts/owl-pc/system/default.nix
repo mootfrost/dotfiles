@@ -58,7 +58,6 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    git
     wget
     mesa
     libGL

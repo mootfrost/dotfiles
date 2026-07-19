@@ -17,18 +17,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    yukigram.url = "github:yukigram/yukigram/release";
   };
 
 outputs = inputs@{ self, nixpkgs, ... }:
 let
   ctx = {
     sources = inputs;
+    src = ./.;
+    packages = import ./packages;
   };
   mkSystems = import ./utils/mkSystems.nix ctx;
 
   systems = mkSystems [
     "owl-pc"
-    "laptop"
   ];
 
 in

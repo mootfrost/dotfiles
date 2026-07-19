@@ -13,7 +13,6 @@
   home.stateVersion = "25.05";
   imports = [
     ./apps
-    ./shell/shell.nix
     ./style.nix
     ./packages.nix
     ./dev.nix
